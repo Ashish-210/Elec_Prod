@@ -18,4 +18,10 @@ public class ElectronicItem
     {
         Console.WriteLine($"Name: {Name}, Brand: {Brand}, Price: {Price}, Warranty Period: {WarrantyPeriod} months");
     }
+    //create a method to check if the item is under warranty
+    public bool IsUnderWarranty(DateTime purchaseDate)
+    {
+        DateTime warrantyEndDate = purchaseDate.AddMonths(WarrantyPeriod);
+        return DateTime.Now <= warrantyEndDate;
+    }
 }
