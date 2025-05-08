@@ -24,4 +24,13 @@ public class ElectronicItem
         DateTime warrantyEndDate = purchaseDate.AddMonths(WarrantyPeriod);
         return DateTime.Now <= warrantyEndDate;
     }
+
+    //make a function to calculate the depreciation value of the item
+    public double CalculateDepreciationValue(DateTime purchaseDate)
+    {
+        DateTime warrantyEndDate = purchaseDate.AddMonths(WarrantyPeriod);
+        int monthsUsed = (DateTime.Now.Year - purchaseDate.Year) * 12 + DateTime.Now.Month - purchaseDate.Month;
+        double depreciationRate = 0.1; // 10% per month
+        return Price * Math.Pow(1 - depreciationRate, monthsUsed);
+    }
 }
